@@ -9,7 +9,10 @@ namespace Spotify.DAL.Repositories.Genre
         private readonly AppDbContext _context;
 
         public GenreRepository(AppDbContext context)
-            :base(context) {}
+            :base(context) 
+        {
+            _context = context;
+        }
 
         public IQueryable<GenreEntity> Genres => GetAll();
 

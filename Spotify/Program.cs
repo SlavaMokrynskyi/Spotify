@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Spotify.DAL;
+using Spotify.DAL.Repositories.Artist;
 using Spotify.DAL.Repositories.Genre;
+using Spotify.DAL.Repositories.Track;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Add repositories
 
 builder.Services.AddScoped<IGenreRepository, GenreRepository>();
+builder.Services.AddScoped<IArtistRepository, ArtistRepository>();
+builder.Services.AddScoped<ITrackRepository, TrackRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

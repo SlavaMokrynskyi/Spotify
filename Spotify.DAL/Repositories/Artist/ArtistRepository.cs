@@ -8,7 +8,10 @@ namespace Spotify.DAL.Repositories.Artist
     {
         private readonly AppDbContext _context;
         public ArtistRepository(AppDbContext context)
-            : base(context) { }
+            : base(context) 
+        {
+            _context = context;
+        }
         public IQueryable<ArtistEntity> Artists => GetAll();
 
         public async Task<ICollection<ArtistEntity>> GetByNameAsync(string name)
@@ -16,7 +19,7 @@ namespace Spotify.DAL.Repositories.Artist
             return await Artists.Where(a => a.Name == name).ToListAsync();
         }
 
-        public async Task<ICollection<TrackEntity>> GetTracks(string artistId)
+        public async Task<ICollection<TrackEntity>> GetTracksAsync(string artistId)
         {
             return await Artists.Where(a => a.Id == artistId)
                 .SelectMany(a => a.Tracks)

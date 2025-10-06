@@ -7,7 +7,7 @@ namespace Spotify.DAL.Repositories.Artist
     {
         IQueryable<ArtistEntity> Artists { get; }
         Task<ICollection<ArtistEntity>> GetByNameAsync(string name);
-        Task<ICollection<TrackEntity>> GetTracks(string artistId);
+        Task<ICollection<TrackEntity>> GetTracksAsync(string artistId);
         Task<bool> IsExistsAsync(string name);
     }
 }
